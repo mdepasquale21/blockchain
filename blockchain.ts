@@ -8,15 +8,25 @@ export class Blockchain {
     ) {
     }
 
-    static create(difficulty: number) {
+    public static create(difficulty: number) {
         const genesisBlock = new Block(null, null);
         return new Blockchain(genesisBlock, [genesisBlock], difficulty);
     }
 
     public addBlock(transaction: Transaction): void {
-        const lastBlock = this.chain[this.chain.length - 1];
-        const newBlock = new Block(transaction, lastBlock.getHash());
+        const lastBlock: IBlock = this.extractLastBlockFromChain();
+        const newBlock: IBlock = new Block(transaction, lastBlock.getHash());
         newBlock.mine(this.difficulty);
         this.chain.push(newBlock);
     }
+
+    private extractLastBlockFromChain() {
+        return this.chain[this.chain.length - 1];
+    }
+
+// todo validate the blockchain
+    public isValid(): boolean {
+        return false;
+    }
+
 }
