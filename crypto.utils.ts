@@ -11,8 +11,7 @@ export class CryptoUtils {
     }
 
     private static buildStringBlockData(block: IBlock): string {
-        const stringifyBlockData: string = JSON.stringify(block.getData());
-        return stringifyBlockData +
+        return block.getTransactionDataAsString() +
             block.getPreviousHash() +
             block.getTimestampToISOString() +
             block.getPowToString();

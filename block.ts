@@ -1,17 +1,18 @@
 import {CryptoUtils} from "./crypto.utils";
+import {Transaction} from "./transaction";
 
 export class Block implements IBlock {
-    private data;
+    private data: Transaction;
     private hash: string;
     private previousHash: string;
     private timestamp: Date;
     private pow: number;
 
-    constructor(data, previousHash) {
+    constructor(data: Transaction, previousHash: string) {
         this.initBlockData(data, previousHash);
     }
 
-    private initBlockData(data: any, previousHash: string): void {
+    private initBlockData(data: Transaction, previousHash: string): void {
         this.data = data;
         this.hash = "";
         this.previousHash = previousHash;
@@ -19,7 +20,7 @@ export class Block implements IBlock {
         this.pow = 0;
     }
 
-    private mine(difficulty: number) {
+    mine(difficulty: number) {
         const regex = new RegExp(`^(0){${difficulty}}.*`);
         while (!this.hash.match(regex)) {
             this.pow++;
@@ -27,8 +28,12 @@ export class Block implements IBlock {
         }
     }
 
-    getData(): any {
-        return this.data
+    getTransactionData(): Transaction {
+        return this.data;
+    }
+
+    getTransactionDataAsString(): string {
+        return JSON.stringify(this.getTransactionData());
     }
 
     getHash(): string {
@@ -58,7 +63,9 @@ export class Block implements IBlock {
 }
 
 export interface IBlock {
-    getData(): any;
+    getTransactionData(): Transaction;
+
+    getTransactionDataAsString(): string;
 
     getHash(): string;
 
