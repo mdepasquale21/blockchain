@@ -28,54 +28,53 @@ export class Block implements IBlock {
         }
     }
 
-    getTransactionData(): Transaction {
-        return this.data;
-    }
-
-    getTransactionDataAsString(): string {
-        return JSON.stringify(this.getTransactionData());
+    getBlockDataAsString(): string {
+        return this.getTransactionDataAsString() +
+            this.getPreviousHash() +
+            this.getTimestampToISOString() +
+            this.getPowToString();
     }
 
     getHash(): string {
         return this.hash;
     }
 
-    getPreviousHash(): string {
+    private getTransactionData(): Transaction {
+        return this.data;
+    }
+
+    private getTransactionDataAsString(): string {
+        return JSON.stringify(this.getTransactionData());
+    }
+
+    private getPreviousHash(): string {
         return this.previousHash;
     }
 
-    getTimestamp(): Date {
+    private getTimestamp(): Date {
         return this.timestamp;
     }
 
-    getPow(): number {
-        return this.pow;
-    }
-
-    getTimestampToISOString(): string {
+    private getTimestampToISOString(): string {
         return this.getTimestamp().toISOString();
     }
 
-    getPowToString(): string {
+    private getPow(): number {
+        return this.pow;
+    }
+
+    private getPowToString(): string {
         return this.getPow().toString();
     }
 
 }
 
 export interface IBlock {
-    getTransactionData(): Transaction;
 
-    getTransactionDataAsString(): string;
+    mine(difficulty: number): void;
+
+    getBlockDataAsString(): string;
 
     getHash(): string;
 
-    getPreviousHash(): string;
-
-    getTimestamp(): Date;
-
-    getPow(): number;
-
-    getTimestampToISOString(): string;
-
-    getPowToString(): string;
 }
