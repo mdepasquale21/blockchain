@@ -1,3 +1,5 @@
+import {CryptoUtils} from "./crypto.utils";
+
 export class Block implements IBlock {
     private data;
     private hash: string;
@@ -6,15 +8,23 @@ export class Block implements IBlock {
     private pow: number;
 
     constructor(data, previousHash) {
-        this.buildBlockData(data, previousHash);
+        this.initBlockData(data, previousHash);
     }
 
-    private buildBlockData(data: any, previousHash: string): void {
+    private initBlockData(data: any, previousHash: string): void {
         this.data = data;
         this.hash = "";
         this.previousHash = previousHash;
         this.timestamp = new Date();
         this.pow = 0;
+    }
+
+    private mine(difficulty: number) {
+        const regex = new RegExp(`^(0){${difficulty}}.*`);
+        while (!this.hash.match(regex)) {
+            this.pow++;
+            this.hash = CryptoUtils.createHashFor(this);
+        }
     }
 
     getData(): any {
