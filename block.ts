@@ -24,19 +24,19 @@ export class Block implements IBlock {
         const regex = new RegExp(`^(0){${difficulty}}.*`);
         while (!this.hash.match(regex)) {
             this.pow++;
-            this.hash = CryptoUtils.createHashFor(this);
+            this.hash = CryptoUtils.createSha256HashFrom(this.getBlockDataAsString());
         }
-    }
-
-    getBlockDataAsString(): string {
-        return this.getTransactionDataAsString() +
-            this.getPreviousHash() +
-            this.getTimestampToISOString() +
-            this.getPowToString();
     }
 
     getHash(): string {
         return this.hash;
+    }
+
+    private getBlockDataAsString(): string {
+        return this.getTransactionDataAsString() +
+            this.getPreviousHash() +
+            this.getTimestampToISOString() +
+            this.getPowToString();
     }
 
     private getTransactionData(): Transaction {
@@ -72,8 +72,6 @@ export class Block implements IBlock {
 export interface IBlock {
 
     mine(difficulty: number): void;
-
-    getBlockDataAsString(): string;
 
     getHash(): string;
 
