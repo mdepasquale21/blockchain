@@ -20,16 +20,20 @@ export class Block implements IBlock {
         this.pow = 0;
     }
 
+    getHash(): string {
+        return this.hash;
+    }
+
     mine(difficulty: number) {
-        const regex = new RegExp(`^(0){${difficulty}}.*`);
-        while (!this.hash.match(regex)) {
+        const difficultyRegExp = this.createRegexpFor(difficulty);
+        while (!this.hash.match(difficultyRegExp)) {
             this.pow++;
             this.hash = CryptoUtils.createSha256HashFrom(this.getBlockDataAsString());
         }
     }
 
-    getHash(): string {
-        return this.hash;
+    private createRegexpFor(difficulty: number) {
+        return new RegExp(`^(0){${difficulty}}.*`);
     }
 
     private getBlockDataAsString(): string {
@@ -71,8 +75,8 @@ export class Block implements IBlock {
 
 export interface IBlock {
 
-    mine(difficulty: number): void;
-
     getHash(): string;
+
+    mine(difficulty: number): void;
 
 }
