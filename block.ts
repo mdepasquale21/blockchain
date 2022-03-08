@@ -8,7 +8,8 @@ export class Block implements IBlock {
     private timestamp: Date;
     private pow: number;
 
-    constructor(data: Transaction, previousHash: string) {
+    constructor(data: Transaction,
+                previousHash: string) {
         this.initBlockData(data, previousHash);
     }
 
