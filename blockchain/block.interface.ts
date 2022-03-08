@@ -6,4 +6,6 @@ export interface IBlock {
 
     mine(): void;
 
+    getBlockDataAsString(): string;
+
 }

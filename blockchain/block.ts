@@ -48,7 +48,7 @@ export class Block implements IBlock {
         }
     }
 
-    private getBlockDataAsString(): string {
+    getBlockDataAsString(): string {
         return this.getTransactionDataAsString() +
             this.getPreviousHash() +
             this.getTimestampToISOString() +

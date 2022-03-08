@@ -1,6 +1,7 @@
 import {Block} from "./block";
 import {Transaction} from "./transaction";
 import {IBlock} from "./block.interface";
+import {CryptoUtils} from "../utils/crypto.utils";
 
 export class Blockchain {
     constructor(private genesisBlock: IBlock,
@@ -25,7 +26,6 @@ export class Blockchain {
         return this.chain[this.chain.length - 1];
     }
 
-// todo complete validation of the blockchain
     public isValid(): boolean {
         if (this.chain.length === 1) {
             return true;
@@ -34,7 +34,7 @@ export class Blockchain {
             const currentBlock = this.chain[i];
             const previousBlock = this.chain[i - 1];
             if (
-                // currentBlock.getHash() !== calculateHash(currentBlock) ||
+                currentBlock.getHash() !== CryptoUtils.recalculateSha256HashFor(currentBlock) ||
                 previousBlock.getHash() !== currentBlock.getPreviousHash()
             ) {
                 return false;
