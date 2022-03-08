@@ -1,5 +1,6 @@
-import {Block, IBlock} from "./block";
+import {Block} from "./block";
 import {Transaction} from "./transaction";
+import {IBlock} from "./block.interface";
 
 export class Blockchain {
     constructor(private genesisBlock: IBlock,

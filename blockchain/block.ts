@@ -1,5 +1,6 @@
-import {CryptoUtils} from "./crypto.utils";
+import {CryptoUtils} from "../utils/crypto.utils";
 import {Transaction} from "./transaction";
+import {IBlock} from "./block.interface";
 
 export class Block implements IBlock {
     private data: Transaction;
@@ -77,13 +78,5 @@ export class Block implements IBlock {
     private getPowToString(): string {
         return this.getPow().toString();
     }
-
-}
-
-export interface IBlock {
-
-    getHash(): string;
-
-    mine(): void;
 
 }
