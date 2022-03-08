@@ -9,14 +9,14 @@ export class Blockchain {
     }
 
     public static create(difficulty: number) {
-        const genesisBlock = new Block(null, null);
+        const genesisBlock = new Block(null, null, difficulty);
         return new Blockchain(genesisBlock, [genesisBlock], difficulty);
     }
 
     public addBlock(transaction: Transaction): void {
         const lastBlock: IBlock = this.extractLastBlockFromChain();
-        const newBlock: IBlock = new Block(transaction, lastBlock.getHash());
-        newBlock.mine(this.difficulty);
+        const newBlock: IBlock = new Block(transaction, lastBlock.getHash(), this.difficulty);
+        newBlock.mine();
         this.chain.push(newBlock);
     }
 

@@ -7,34 +7,40 @@ export class Block implements IBlock {
     private previousHash: string;
     private timestamp: Date;
     private pow: number;
+    private difficulty: number;
+    private difficultyRegExp: RegExp;
 
     constructor(data: Transaction,
-                previousHash: string) {
-        this.initBlockData(data, previousHash);
+                previousHash: string,
+                difficulty: number) {
+        this.initBlockData(data, previousHash, difficulty);
     }
 
-    private initBlockData(data: Transaction, previousHash: string): void {
+    private initBlockData(data: Transaction,
+                          previousHash: string,
+                          difficulty: number): void {
         this.data = data;
         this.hash = "";
         this.previousHash = previousHash;
         this.timestamp = new Date();
         this.pow = 0;
+        this.difficulty = difficulty;
+        this.difficultyRegExp = this.createRegexpFor(difficulty);
+    }
+
+    private createRegexpFor(difficulty: number) {
+        return new RegExp(`^(0){${difficulty}}.*`);
     }
 
     getHash(): string {
         return this.hash;
     }
 
-    mine(difficulty: number) {
-        const difficultyRegExp = this.createRegexpFor(difficulty);
-        while (!this.hash.match(difficultyRegExp)) {
+    mine(): void {
+        while (!this.hash.match(this.difficultyRegExp)) {
             this.pow++;
             this.hash = CryptoUtils.createSha256HashFrom(this.getBlockDataAsString());
         }
-    }
-
-    private createRegexpFor(difficulty: number) {
-        return new RegExp(`^(0){${difficulty}}.*`);
     }
 
     private getBlockDataAsString(): string {
@@ -78,6 +84,6 @@ export interface IBlock {
 
     getHash(): string;
 
-    mine(difficulty: number): void;
+    mine(): void;
 
 }
