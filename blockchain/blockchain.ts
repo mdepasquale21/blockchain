@@ -25,9 +25,22 @@ export class Blockchain {
         return this.chain[this.chain.length - 1];
     }
 
-// todo validate the blockchain
+// todo complete validation of the blockchain
     public isValid(): boolean {
-        return false;
+        if (this.chain.length === 1) {
+            return true;
+        }
+        for (let i = 1; i < this.chain.length; i++) {
+            const currentBlock = this.chain[i];
+            const previousBlock = this.chain[i - 1];
+            if (
+                // currentBlock.getHash() !== calculateHash(currentBlock) ||
+                previousBlock.getHash() !== currentBlock.getPreviousHash()
+            ) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

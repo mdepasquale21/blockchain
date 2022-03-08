@@ -37,6 +37,10 @@ export class Block implements IBlock {
         return this.hash;
     }
 
+    getPreviousHash(): string {
+        return this.previousHash;
+    }
+
     mine(): void {
         while (!this.hash.match(this.difficultyRegExp)) {
             this.pow++;
@@ -57,10 +61,6 @@ export class Block implements IBlock {
 
     private getTransactionDataAsString(): string {
         return JSON.stringify(this.getTransactionData());
-    }
-
-    private getPreviousHash(): string {
-        return this.previousHash;
     }
 
     private getTimestamp(): Date {
