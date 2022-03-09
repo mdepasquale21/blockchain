@@ -10,7 +10,7 @@ export class Blockchain {
     ) {
     }
 
-    public static create(difficulty: number) {
+    public static create(difficulty: number): Blockchain {
         const genesisBlock = new Block(null, null, difficulty);
         return new Blockchain(genesisBlock, [genesisBlock], difficulty);
     }
@@ -22,7 +22,7 @@ export class Blockchain {
         this.chain.push(newBlock);
     }
 
-    private extractLastBlockFromChain() {
+    private extractLastBlockFromChain(): IBlock {
         return this.extractBlockAt(this.chain.length - 1);
     }
 
@@ -45,6 +45,11 @@ export class Blockchain {
             }
         }
         return true;
+    }
+
+    // todo print blockchain data nicely
+    public print() {
+
     }
 
 }

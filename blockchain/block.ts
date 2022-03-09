@@ -29,7 +29,7 @@ export class Block implements IBlock {
         this.difficultyRegExp = this.createRegexpFor(difficulty);
     }
 
-    private createRegexpFor(difficulty: number) {
+    private createRegexpFor(difficulty: number): RegExp {
         return new RegExp(`^(0){${difficulty}}.*`);
     }
 

@@ -2,7 +2,7 @@ import {Blockchain} from "./blockchain/blockchain";
 import {Transaction} from "./blockchain/transaction";
 
 const difficulty = 2;
-const blockchain = Blockchain.create(difficulty);
+const blockchain: Blockchain = Blockchain.create(difficulty);
 
 const transaction1: Transaction = {
     from: 'Marco',
@@ -20,6 +20,7 @@ blockchain.addBlock(transaction2);
 console.log('\nBlockchain:')
 console.log(blockchain);
 console.log(`verified: ${blockchain.isValid()}`);
+console.log('\n')
 
 // cannot tamper with blockchain data from this code
 // can only add a block and check if the blockchain is valid
