@@ -10,7 +10,7 @@ export class CryptoUtils {
     }
 
     static recalculateSha256HashFor(block: IBlock): string {
-        return CryptoUtils.createSha256HashFrom(block.getBlockDataAsString());
+        return CryptoUtils.createSha256HashFrom(block.getConcatDataAsString());
     }
 
 }

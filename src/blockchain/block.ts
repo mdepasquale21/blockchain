@@ -45,11 +45,11 @@ export class Block implements IBlock {
     mine(): void {
         while (!this.hash.match(this.difficultyRegExp)) {
             this.pow++;
-            this.hash = CryptoUtils.createSha256HashFrom(this.getBlockDataAsString());
+            this.hash = CryptoUtils.createSha256HashFrom(this.getConcatDataAsString());
         }
     }
 
-    getBlockDataAsString(): string {
+    getConcatDataAsString(): string {
         return this.getTransactionDataAsString() +
             this.getPreviousHash() +
             this.getTimestampToISOString() +
@@ -62,7 +62,8 @@ export class Block implements IBlock {
             hash: this.getHash(),
             previousHash: this.getPreviousHash(),
             timestamp: this.getTimestampToISOString(),
-            pow: this.getPowToString()
+            pow: this.getPowToString(),
+            difficulty: this.getDifficultyToString()
         };
     }
 
@@ -88,6 +89,14 @@ export class Block implements IBlock {
 
     private getPowToString(): string {
         return this.getPow().toString();
+    }
+
+    private getDifficulty(): number {
+        return this.difficulty;
+    }
+
+    private getDifficultyToString(): string {
+        return this.getDifficulty().toString();
     }
 
 }

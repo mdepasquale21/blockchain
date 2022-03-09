@@ -51,7 +51,7 @@ export class Blockchain {
     public printToConsole(): void {
         console.log('\n');
         console.log('***** Blockchain data *****');
-        console.log(`Difficulty: ${this.difficulty}`);
+        console.log(`Current difficulty: ${this.difficulty}`);
         console.log(`Verified: ${this.isValid()}`);
         for (let block of this.chain) {
             const blockPrintableData: BlockPrintableData = block.getPrintableData();

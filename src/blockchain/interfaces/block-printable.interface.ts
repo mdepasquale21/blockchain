@@ -4,4 +4,5 @@ export interface BlockPrintableData {
     previousHash: string;
     timestamp: string;
     pow: string;
+    difficulty: string;
 }

@@ -8,7 +8,7 @@ export interface IBlock {
 
     mine(): void;
 
-    getBlockDataAsString(): string;
+    getConcatDataAsString(): string;
 
     getPrintableData(): BlockPrintableData;
 
