@@ -2,6 +2,7 @@ import {Block} from "./block";
 import {Transaction} from "./transaction";
 import {IBlock} from "./block.interface";
 import {CryptoUtils} from "../utils/crypto.utils";
+import {BlockPrintableData} from "./block-printable.interface";
 
 export class Blockchain {
     constructor(private genesisBlock: IBlock,
@@ -11,7 +12,7 @@ export class Blockchain {
     }
 
     public static create(difficulty: number): Blockchain {
-        const genesisBlock = new Block(null, null, difficulty);
+        const genesisBlock: IBlock = new Block(null, null, difficulty);
         return new Blockchain(genesisBlock, [genesisBlock], difficulty);
     }
 
@@ -35,8 +36,8 @@ export class Blockchain {
             return true;
         }
         for (let i = 1; i < this.chain.length; i++) {
-            const currentBlock = this.extractBlockAt(i);
-            const previousBlock = this.extractBlockAt(i - 1);
+            const currentBlock: IBlock = this.extractBlockAt(i);
+            const previousBlock: IBlock = this.extractBlockAt(i - 1);
             if (
                 currentBlock.getHash() !== CryptoUtils.recalculateSha256HashFor(currentBlock) ||
                 previousBlock.getHash() !== currentBlock.getPreviousHash()
@@ -47,9 +48,17 @@ export class Blockchain {
         return true;
     }
 
-    // todo print blockchain data nicely
-    public print() {
-
+    public printToConsole(): void {
+        console.log('\n');
+        console.log('***** Blockchain data *****');
+        console.log(`Difficulty: ${this.difficulty}`);
+        console.log(`Verified: ${this.isValid()}`);
+        for (let block of this.chain) {
+            const blockPrintableData: BlockPrintableData = block.getPrintableData();
+            console.log(blockPrintableData);
+        }
+        console.log('***** ----- *****');
+        console.log('\n');
     }
 
 }

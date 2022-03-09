@@ -1,6 +1,7 @@
 import {CryptoUtils} from "../utils/crypto.utils";
 import {Transaction} from "./transaction";
 import {IBlock} from "./block.interface";
+import {BlockPrintableData} from "./block-printable.interface";
 
 export class Block implements IBlock {
     private data: Transaction;
@@ -55,12 +56,22 @@ export class Block implements IBlock {
             this.getPowToString();
     }
 
+    getPrintableData(): BlockPrintableData {
+        return {
+            data: this.getTransactionDataAsString(),
+            hash: this.getHash(),
+            previousHash: this.getPreviousHash(),
+            timestamp: this.getTimestampToISOString(),
+            pow: this.getPowToString()
+        };
+    }
+
     private getTransactionData(): Transaction {
-        return this.data;
+        return this.data ?? {} as Transaction;
     }
 
     private getTransactionDataAsString(): string {
-        return JSON.stringify(this.getTransactionData());
+        return JSON.stringify(this.getTransactionData(), null, 4);
     }
 
     private getTimestamp(): Date {

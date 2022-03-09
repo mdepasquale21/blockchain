@@ -1,3 +1,5 @@
+import {BlockPrintableData} from "./block-printable.interface";
+
 export interface IBlock {
 
     getHash(): string;
@@ -7,5 +9,7 @@ export interface IBlock {
     mine(): void;
 
     getBlockDataAsString(): string;
+
+    getPrintableData(): BlockPrintableData;
 
 }

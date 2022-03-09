@@ -17,10 +17,7 @@ const transaction2: Transaction = {
 blockchain.addBlock(transaction1);
 blockchain.addBlock(transaction2);
 
-console.log('\nBlockchain:')
-console.log(blockchain);
-console.log(`verified: ${blockchain.isValid()}`);
-console.log('\n')
+blockchain.printToConsole();
 
 // cannot tamper with blockchain data from this code
 // can only add a block and check if the blockchain is valid
