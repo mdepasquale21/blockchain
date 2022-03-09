@@ -14,8 +14,14 @@ const transaction2: Transaction = {
     to: 'Matteo',
     amount: 100
 };
+const transaction3: Transaction = {
+    from: 'Lorenzo',
+    to: 'Laura',
+    amount: 50
+};
 blockchain.addBlock(transaction1);
 blockchain.addBlock(transaction2);
+blockchain.addBlock(transaction3);
 
 blockchain.printToConsole();
 
