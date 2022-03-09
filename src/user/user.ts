@@ -1,10 +1,5 @@
 import {UuidUtil} from "../utils/uuid.util";
 
-export interface IUser {
-    id: string;
-    name: string;
-}
-
 export class User {
 
     constructor(private id: string,
