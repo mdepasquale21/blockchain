@@ -1,7 +1,7 @@
 import {Blockchain} from "./blockchain/blockchain";
 import {Transaction} from "./blockchain/interfaces/transaction";
 
-const difficulty = 2;
+const difficulty = 3;
 const blockchain: Blockchain = Blockchain.create(difficulty);
 
 const transactions: Transaction[] = [
