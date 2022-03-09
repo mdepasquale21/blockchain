@@ -23,7 +23,11 @@ export class Blockchain {
     }
 
     private extractLastBlockFromChain() {
-        return this.chain[this.chain.length - 1];
+        return this.extractBlockAt(this.chain.length - 1);
+    }
+
+    private extractBlockAt(index: number): IBlock {
+        return this.chain[index];
     }
 
     public isValid(): boolean {
@@ -31,8 +35,8 @@ export class Blockchain {
             return true;
         }
         for (let i = 1; i < this.chain.length; i++) {
-            const currentBlock = this.chain[i];
-            const previousBlock = this.chain[i - 1];
+            const currentBlock = this.extractBlockAt(i);
+            const previousBlock = this.extractBlockAt(i - 1);
             if (
                 currentBlock.getHash() !== CryptoUtils.recalculateSha256HashFor(currentBlock) ||
                 previousBlock.getHash() !== currentBlock.getPreviousHash()
