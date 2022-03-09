@@ -1,7 +1,7 @@
 import {CryptoUtils} from "../utils/crypto.utils";
-import {Transaction} from "./transaction";
-import {IBlock} from "./block.interface";
-import {BlockPrintableData} from "./block-printable.interface";
+import {Transaction} from "./interfaces/transaction";
+import {IBlock} from "./interfaces/block.interface";
+import {BlockPrintableData} from "./interfaces/block-printable.interface";
 
 export class Block implements IBlock {
     private data: Transaction;

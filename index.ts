@@ -1,5 +1,5 @@
 import {Blockchain} from "./blockchain/blockchain";
-import {Transaction} from "./blockchain/transaction";
+import {Transaction} from "./blockchain/interfaces/transaction";
 
 const difficulty = 2;
 const blockchain: Blockchain = Blockchain.create(difficulty);

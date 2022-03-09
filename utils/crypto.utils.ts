@@ -1,5 +1,5 @@
 import {createHash} from 'crypto';
-import {IBlock} from "../blockchain/block.interface";
+import {IBlock} from "../blockchain/interfaces/block.interface";
 
 export class CryptoUtils {
     private static readonly algorithm = "sha256";

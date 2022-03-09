@@ -1,8 +1,8 @@
 import {Block} from "./block";
-import {Transaction} from "./transaction";
-import {IBlock} from "./block.interface";
+import {Transaction} from "./interfaces/transaction";
+import {IBlock} from "./interfaces/block.interface";
 import {CryptoUtils} from "../utils/crypto.utils";
-import {BlockPrintableData} from "./block-printable.interface";
+import {BlockPrintableData} from "./interfaces/block-printable.interface";
 
 export class Blockchain {
     constructor(private genesisBlock: IBlock,
