@@ -1,23 +1,24 @@
 import {Blockchain} from "./blockchain/blockchain";
 import {Transaction} from "./blockchain/interfaces/transaction";
+import {User} from "./user/user";
 
 const difficulty = 3;
 const blockchain: Blockchain = Blockchain.create(difficulty);
 
 const transactions: Transaction[] = [
     {
-        from: 'Marco',
-        to: 'Nicola',
+        from: User.create('Marco').getId(),
+        to: User.create('Nicola').getId(),
         amount: 7
     },
     {
-        from: 'Daniele',
-        to: 'Matteo',
+        from: User.create('Daniele').getId(),
+        to: User.create('Matteo').getId(),
         amount: 100
     },
     {
-        from: 'Lorenzo',
-        to: 'Laura',
+        from: User.create('Lorenzo').getId(),
+        to: User.create('Laura').getId(),
         amount: 50
     }
 ];
