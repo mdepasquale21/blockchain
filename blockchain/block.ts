@@ -21,7 +21,7 @@ export class Block implements IBlock {
                           previousHash: string,
                           difficulty: number): void {
         this.data = data;
-        this.hash = "";
+        this.hash = "0";
         this.previousHash = previousHash;
         this.timestamp = new Date();
         this.pow = 0;
