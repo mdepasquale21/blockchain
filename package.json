@@ -10,7 +10,7 @@
     "run": "nodemon --exec npm run _run",
     "_run": "npm run build && npm run start",
     "build": "tsc -p tsconfig.json",
-    "start": "node ./index.js",
+    "start": "node src/index.js",
     "clean": "node ./clean.js"
   },
   "keywords": [
