@@ -3,6 +3,7 @@ import {Transaction} from "./interfaces/transaction";
 import {IBlock} from "./interfaces/block.interface";
 import {CryptoUtils} from "../utils/crypto.utils";
 import {BlockPrintableData} from "./interfaces/block-printable.interface";
+import {BlockchainPrintableData} from "./interfaces/blockchain-printable.interface";
 
 export class Blockchain {
     protected constructor(private genesisBlock: IBlock,
@@ -57,17 +58,35 @@ export class Blockchain {
         return true;
     }
 
+    private getBlockPrintableDataList(): BlockPrintableData[] {
+        let blockPrintableDataList: BlockPrintableData[] = [];
+        for (let block of this.chain) {
+            const blockPrintableData: BlockPrintableData = block.getPrintableData();
+            blockPrintableDataList.push(blockPrintableData);
+        }
+        return blockPrintableDataList;
+    }
+
     public printToConsole(): void {
         console.log('\n');
         console.log('***** Blockchain data *****');
         console.log(`Current difficulty: ${this.difficulty}`);
         console.log(`Verified: ${this.isValid()}`);
-        for (let block of this.chain) {
-            const blockPrintableData: BlockPrintableData = block.getPrintableData();
-            console.log(blockPrintableData);
+        let blocks: BlockPrintableData[] = this.getBlockPrintableDataList();
+        for (let block of blocks) {
+            console.log(block);
         }
         console.log('***** ----- *****');
         console.log('\n');
+    }
+
+    public formatBlockchainJson(): BlockchainPrintableData {
+        let blocks: BlockPrintableData[] = this.getBlockPrintableDataList();
+        return {
+            currentDifficulty: this.difficulty,
+            verified: this.isValid(),
+            blocks,
+        }
     }
 
 }

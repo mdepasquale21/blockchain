@@ -1,9 +1,11 @@
+import {Transaction} from "./transaction";
+
 export interface BlockPrintableData {
-    index: string;
-    data: string;
+    index: number;
+    data: Transaction;
     hash: string;
     previousHash: string;
     timestamp: string;
-    pow: string;
-    difficulty: string;
+    pow: number;
+    difficulty: number;
 }

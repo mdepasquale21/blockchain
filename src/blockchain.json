@@ -1,0 +1,56 @@
+{
+    "blockchainData": {
+        "currentDifficulty": 3,
+        "verified": true,
+        "blocks": [
+            {
+                "index": 0,
+                "data": {},
+                "hash": "0",
+                "previousHash": null,
+                "timestamp": "2022-03-11T16:58:22.542Z",
+                "pow": 0,
+                "difficulty": 3
+            },
+            {
+                "index": 1,
+                "data": {
+                    "from": "8b4354f8-c941-481c-85ad-445f97d3a04b",
+                    "to": "77a2133c-5127-4b48-9d0d-62a0e08c1982",
+                    "amount": 7
+                },
+                "hash": "0008b0d9aeaa837c44a20932ee18d9dee4780a485f202eea08a889f71d87a1d5",
+                "previousHash": "0",
+                "timestamp": "2022-03-11T16:58:22.542Z",
+                "pow": 1719,
+                "difficulty": 3
+            },
+            {
+                "index": 2,
+                "data": {
+                    "from": "090ddc7d-b32a-46ca-bd03-6dcf99d0a9da",
+                    "to": "71ede0ee-25ac-4a75-8a44-d8132ddc243d",
+                    "amount": 100
+                },
+                "hash": "000b3b3b0eb918bfdf0bcd0c9de7922b850b5246f18307308e4652e0090f3d56",
+                "previousHash": "0008b0d9aeaa837c44a20932ee18d9dee4780a485f202eea08a889f71d87a1d5",
+                "timestamp": "2022-03-11T16:58:22.553Z",
+                "pow": 1288,
+                "difficulty": 3
+            },
+            {
+                "index": 3,
+                "data": {
+                    "from": "723311a7-2883-4d18-8f14-d45227625713",
+                    "to": "9cf31bb6-ac4d-4546-a4c2-93e91f6ab27a",
+                    "amount": 50
+                },
+                "hash": "0006061fbc1c23866041568a981c090ffd8dcb0ecc1643dac225253c44154f5b",
+                "previousHash": "000b3b3b0eb918bfdf0bcd0c9de7922b850b5246f18307308e4652e0090f3d56",
+                "timestamp": "2022-03-11T16:58:22.563Z",
+                "pow": 3848,
+                "difficulty": 3
+            }
+        ]
+    }
+}

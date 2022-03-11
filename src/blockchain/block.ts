@@ -67,13 +67,13 @@ export class Block implements IBlock {
 
     getPrintableData(): BlockPrintableData {
         return {
-            index: this.getIndexToString(),
-            data: this.getTransactionDataAsString(),
+            index: this.getIndex(),
+            data: this.getTransactionData(),
             hash: this.getHash(),
             previousHash: this.getPreviousHash(),
             timestamp: this.getTimestampToISOString(),
-            pow: this.getPowToString(),
-            difficulty: this.getDifficultyToString()
+            pow: this.getPow(),
+            difficulty: this.getDifficulty()
         };
     }
 
