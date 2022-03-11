@@ -67,19 +67,6 @@ export class Blockchain {
         return blockPrintableDataList;
     }
 
-    public printToConsole(): void {
-        console.log('\n');
-        console.log('***** Blockchain data *****');
-        console.log(`Current difficulty: ${this.difficulty}`);
-        console.log(`Verified: ${this.isValid()}`);
-        let blocks: BlockPrintableData[] = this.getBlockPrintableDataList();
-        for (let block of blocks) {
-            console.log(block);
-        }
-        console.log('***** ----- *****');
-        console.log('\n');
-    }
-
     public formatBlockchainJson(): BlockchainPrintableData {
         let blocks: BlockPrintableData[] = this.getBlockPrintableDataList();
         return {

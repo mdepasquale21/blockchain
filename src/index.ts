@@ -36,11 +36,16 @@ async function main() {
         blockchain.addBlock(transaction);
     }
 
-    blockchain.printToConsole();
-
     const blockchainData: BlockchainPrintableData = blockchain.formatBlockchainJson();
-    await fs.writeFileSync(`./src/blockchain.json`,
-        JSON.stringify({blockchainData}, null, 4));
+
+    console.log('\n');
+    console.log('***** Blockchain data *****');
+    console.log(blockchainData);
+    console.log('***** ----- *****');
+    console.log('\n');
+
+    const blockchainDataString: string = JSON.stringify({blockchainData}, null, 4);
+    await fs.writeFileSync(`./src/blockchain.json`, blockchainDataString);
 
 }
 
