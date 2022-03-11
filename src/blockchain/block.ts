@@ -4,6 +4,7 @@ import {IBlock} from "./interfaces/block.interface";
 import {BlockPrintableData} from "./interfaces/block-printable.interface";
 
 export class Block implements IBlock {
+    private index: number;
     private data: Transaction;
     private hash: string;
     private previousHash: string;
@@ -12,15 +13,23 @@ export class Block implements IBlock {
     private difficulty: number;
     private difficultyRegExp: RegExp;
 
-    constructor(data: Transaction,
+    constructor(index: number,
+                data: Transaction,
                 previousHash: string,
                 difficulty: number) {
-        this.initBlockData(data, previousHash, difficulty);
+        this.initBlockData(
+            index,
+            data,
+            previousHash,
+            difficulty
+        );
     }
 
-    private initBlockData(data: Transaction,
+    private initBlockData(index: number,
+                          data: Transaction,
                           previousHash: string,
                           difficulty: number): void {
+        this.index = index;
         this.data = data;
         this.hash = "0";
         this.previousHash = previousHash;
@@ -58,6 +67,7 @@ export class Block implements IBlock {
 
     getPrintableData(): BlockPrintableData {
         return {
+            index: this.getIndexToString(),
             data: this.getTransactionDataAsString(),
             hash: this.getHash(),
             previousHash: this.getPreviousHash(),
@@ -65,6 +75,14 @@ export class Block implements IBlock {
             pow: this.getPowToString(),
             difficulty: this.getDifficultyToString()
         };
+    }
+
+    private getIndex(): number {
+        return this.index;
+    }
+
+    private getIndexToString(): string {
+        return this.getIndex().toString();
     }
 
     private getTransactionData(): Transaction {

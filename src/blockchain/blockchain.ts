@@ -5,20 +5,25 @@ import {CryptoUtils} from "../utils/crypto.utils";
 import {BlockPrintableData} from "./interfaces/block-printable.interface";
 
 export class Blockchain {
-    constructor(private genesisBlock: IBlock,
-                private chain: IBlock[],
-                private difficulty: number
+    protected constructor(private genesisBlock: IBlock,
+                          private chain: IBlock[],
+                          private difficulty: number
     ) {
     }
 
     public static create(difficulty: number): Blockchain {
-        const genesisBlock: IBlock = new Block(null, null, difficulty);
+        const genesisBlock: IBlock = new Block(0, null, null, difficulty);
         return new Blockchain(genesisBlock, [genesisBlock], difficulty);
     }
 
     public addBlock(transaction: Transaction): void {
         const lastBlock: IBlock = this.extractLastBlockFromChain();
-        const newBlock: IBlock = new Block(transaction, lastBlock.getHash(), this.difficulty);
+        const newBlock: IBlock = new Block(
+            this.getChainLength(),
+            transaction,
+            lastBlock.getHash(),
+            this.difficulty
+        );
         newBlock.mine();
         this.chain.push(newBlock);
     }
