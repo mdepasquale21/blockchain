@@ -81,10 +81,6 @@ export class Block implements IBlock {
         return this.index;
     }
 
-    private getIndexToString(): string {
-        return this.getIndex().toString();
-    }
-
     private getTransactionData(): Transaction {
         return this.data ?? {} as Transaction;
     }
@@ -111,10 +107,6 @@ export class Block implements IBlock {
 
     private getDifficulty(): number {
         return this.difficulty;
-    }
-
-    private getDifficultyToString(): string {
-        return this.getDifficulty().toString();
     }
 
 }
