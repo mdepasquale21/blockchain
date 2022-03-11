@@ -24,18 +24,22 @@ export class Blockchain {
     }
 
     private extractLastBlockFromChain(): IBlock {
-        return this.extractBlockAt(this.chain.length - 1);
+        return this.extractBlockAt(this.getChainLength() - 1);
     }
 
     private extractBlockAt(index: number): IBlock {
         return this.chain[index];
     }
 
+    private getChainLength(): number {
+        return this.chain.length;
+    }
+
     public isValid(): boolean {
-        if (this.chain.length === 1) {
+        if (this.getChainLength() === 1) {
             return true;
         }
-        for (let i = 1; i < this.chain.length; i++) {
+        for (let i = 1; i < this.getChainLength(); i++) {
             const currentBlock: IBlock = this.extractBlockAt(i);
             const previousBlock: IBlock = this.extractBlockAt(i - 1);
             if (
