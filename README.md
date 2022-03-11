@@ -25,7 +25,7 @@ Run package.json script `run` or run the command `npm run run` on a terminal. Th
 
 ### 6. See results:
 
-See printed results with blockchain data!
+Have a look at printed blockchain data in ```src/blockchain.json```!
 
 ### Summary
 
