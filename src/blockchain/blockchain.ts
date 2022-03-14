@@ -9,12 +9,14 @@ export class Blockchain {
 
     // Estimated time to add a new block to the chain (after mining)
     // Constant value: 10 min for Bitcoin, 13 seconds for Ethereum
-    // We'll use 13ms
+    // We'll use 13 milliseconds for our simple problem
     private readonly blockTime = 13;
     // Adjust difficulty every nBlocks based on the time it took (2016 blocks for Bitcoin, 1 block for Ethereum)
     private readonly nBlocks = 1;
     // Complete formula should be
     // newDifficulty = oldDifficulty * ((this.nBlocks * this.blockTime) / actualMiningTimeOfPreviousNBlocksBlocks)
+    // difficulty increases if estimated mining time is larger than actual mining time,
+    // vice versa it decreases when estimated time is smaller than actual time
     // We use the Ethereum value for nBlocks and a very small custom blockTime
     // We'll also use a simplified formula for recalculating difficulty (see below)
     // difficulty is recalculated after every block is mined, and it will be slightly different at each iteration
