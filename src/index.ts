@@ -15,21 +15,38 @@ async function main() {
     const difficulty = 3;
     const blockchain: Blockchain = Blockchain.create(difficulty);
 
+    const userMarco: string = User.create('Marco').getId();
+    const userNicola: string = User.create('Nicola').getId();
+    const userDaniele: string = User.create('Daniele').getId();
+    const userMatteo: string = User.create('Matteo').getId();
+    const userLorenzo: string = User.create('Lorenzo').getId();
+    const userLaura: string = User.create('Laura').getId();
+
     const transactions: Transaction[] = [
         {
-            from: User.create('Marco').getId(),
-            to: User.create('Nicola').getId(),
+            from: userMarco,
+            to: userNicola,
             amount: 7
         },
         {
-            from: User.create('Daniele').getId(),
-            to: User.create('Matteo').getId(),
+            from: userDaniele,
+            to: userMatteo,
             amount: 100
         },
         {
-            from: User.create('Lorenzo').getId(),
-            to: User.create('Laura').getId(),
+            from: userLorenzo,
+            to: userLaura,
             amount: 50
+        },
+        {
+            from: userMarco,
+            to: userLaura,
+            amount: 550
+        },
+        {
+            from: userMatteo,
+            to: userMarco,
+            amount: 15
         }
     ];
     for (let transaction of transactions) {
