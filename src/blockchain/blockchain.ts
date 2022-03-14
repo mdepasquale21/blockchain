@@ -31,7 +31,11 @@ export class Blockchain {
     }
 
     private adjustDifficulty(): void {
-        this.difficulty += (this.getMiningTimeOfLastBlock() > (this.nBlocks * this.blockTime)) ? -1: 1;
+        this.difficulty += this.isActualMiningTimeLargerThanEstimatedTime() ? -1 : 1;
+    }
+
+    private isActualMiningTimeLargerThanEstimatedTime(): boolean {
+        return this.getMiningTimeOfLastBlock() > (this.nBlocks * this.blockTime);
     }
 
     private getMiningTimeOfLastBlock(): number {
