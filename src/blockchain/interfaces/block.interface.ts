@@ -12,4 +12,6 @@ export interface IBlock {
 
     getPrintableData(): BlockPrintableData;
 
+    getTimestampInMilliseconds(): number;
+
 }

@@ -6,6 +6,17 @@ import {BlockPrintableData} from "./interfaces/block-printable.interface";
 import {BlockchainPrintableData} from "./interfaces/blockchain-printable.interface";
 
 export class Blockchain {
+
+    // Estimated time to add a new block to the chain (after mining)
+    // Constant value: 10 min for Bitcoin, 13 seconds for Ethereum
+    private readonly blockTime = 13000;
+    // Adjust difficulty every nBlocks based on the time it took (2016 blocks for Bitcoin, 1 block for Ethereum)
+    private readonly nBlocks = 1;
+    // Complete formula should be
+    // newDifficulty = oldDifficulty * ((this.nBlocks * this.blockTime) / actualMiningTimeOfPreviousNBlocksBlocks)
+    // We use the Ethereum value for nBlocks and blockTime, so difficulty is recalculated after every block is mined
+    // Using Bitcoin values would complicate a bit our architecture
+
     protected constructor(private genesisBlock: IBlock,
                           private chain: IBlock[],
                           private difficulty: number
@@ -15,6 +26,14 @@ export class Blockchain {
     public static create(difficulty: number): Blockchain {
         const genesisBlock: IBlock = new Block(0, null, null, difficulty);
         return new Blockchain(genesisBlock, [genesisBlock], difficulty);
+    }
+
+    private adjustDifficulty(): void {
+        this.difficulty = this.difficulty * ((this.nBlocks * this.blockTime) / this.getMiningTimeOfLastBlock());
+    }
+
+    private getMiningTimeOfLastBlock(): number {
+        return new Date().getTime() - this.extractLastBlockFromChain().getTimestampInMilliseconds();
     }
 
     public addBlock(transaction: Transaction): void {
@@ -27,6 +46,11 @@ export class Blockchain {
         );
         newBlock.mine();
         this.chain.push(newBlock);
+        this.adjustDifficulty();
+    }
+
+    private getChainLength(): number {
+        return this.chain.length;
     }
 
     private extractLastBlockFromChain(): IBlock {
@@ -35,10 +59,6 @@ export class Blockchain {
 
     private extractBlockAt(index: number): IBlock {
         return this.chain[index];
-    }
-
-    private getChainLength(): number {
-        return this.chain.length;
     }
 
     public isValid(): boolean {

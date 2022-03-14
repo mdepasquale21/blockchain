@@ -89,6 +89,10 @@ export class Block implements IBlock {
         return JSON.stringify(this.getTransactionData(), null, 4);
     }
 
+    getTimestampInMilliseconds(): number {
+        return this.getTimestamp().getTime();
+    }
+
     private getTimestamp(): Date {
         return this.timestamp;
     }
