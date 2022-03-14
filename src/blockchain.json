@@ -1,6 +1,6 @@
 {
     "blockchainData": {
-        "currentDifficulty": 4,
+        "currentDifficulty": 2,
         "verified": true,
         "blocks": [
             {
@@ -8,73 +8,73 @@
                 "data": {},
                 "hash": "0",
                 "previousHash": null,
-                "timestamp": "2022-03-14T22:28:41.681Z",
+                "timestamp": "2022-03-14T22:32:06.487Z",
                 "pow": 0,
                 "difficulty": 3
             },
             {
                 "index": 1,
                 "data": {
-                    "from": "29d64abc-3c29-4df7-859d-8194e01d52bc",
-                    "to": "04844706-17e5-492d-9efa-64dce6da122e",
+                    "from": "73db2e65-7037-4904-bd4a-7675e384d66d",
+                    "to": "a7378d38-f8ed-4f52-a502-f12cace9c94a",
                     "amount": 7
                 },
-                "hash": "00095688954cb65d949d0ad5c2b8e205655b8b93c430c4ef1441c09e7c04a3d4",
+                "hash": "00036cef86dae0c10e11a8a7c1fb25aa87fd8c5e0327e65f4ebdf5930c0bea8e",
                 "previousHash": "0",
-                "timestamp": "2022-03-14T22:28:41.681Z",
-                "pow": 10212,
+                "timestamp": "2022-03-14T22:32:06.487Z",
+                "pow": 1137,
                 "difficulty": 3
             },
             {
                 "index": 2,
                 "data": {
-                    "from": "ce87990d-afcf-40c3-96c6-200b8f819d0b",
-                    "to": "82d90685-32cc-408e-b15b-32270b94fd4d",
+                    "from": "d7db784a-3cb2-40bc-b308-e188342768dc",
+                    "to": "a13c0878-a854-4c75-a98d-08da937f92bd",
                     "amount": 100
                 },
-                "hash": "00fe0cdca2d223f39cb51e26600d468413d5fcf43879a0080e7710792f0f5624",
-                "previousHash": "00095688954cb65d949d0ad5c2b8e205655b8b93c430c4ef1441c09e7c04a3d4",
-                "timestamp": "2022-03-14T22:28:41.729Z",
-                "pow": 277,
-                "difficulty": 2
+                "hash": "00000e6d2da9a1ba13e33c9f617aec545b0e6283348979ff6b3c380c00198087",
+                "previousHash": "00036cef86dae0c10e11a8a7c1fb25aa87fd8c5e0327e65f4ebdf5930c0bea8e",
+                "timestamp": "2022-03-14T22:32:06.495Z",
+                "pow": 90779,
+                "difficulty": 4
             },
             {
                 "index": 3,
                 "data": {
-                    "from": "5135cda7-a0b3-406f-8a00-7b52a8d27191",
-                    "to": "71f64517-02c2-4da1-9778-b8e3c9eaa966",
+                    "from": "acd9a08d-fd3d-4624-be32-a228bb0ce1bb",
+                    "to": "39ecb9ff-f438-4321-af47-b703efc7b52d",
                     "amount": 50
                 },
-                "hash": "00064dae387130c6edb548a7a4fc18defdd29f50b11315f3efcdad9bd043baf9",
-                "previousHash": "00fe0cdca2d223f39cb51e26600d468413d5fcf43879a0080e7710792f0f5624",
-                "timestamp": "2022-03-14T22:28:41.730Z",
-                "pow": 5963,
+                "hash": "000a3da6731c10f3491ec8295b6c7e10f661a6f437672fa395eb2873044777de",
+                "previousHash": "00000e6d2da9a1ba13e33c9f617aec545b0e6283348979ff6b3c380c00198087",
+                "timestamp": "2022-03-14T22:32:06.801Z",
+                "pow": 844,
                 "difficulty": 3
             },
             {
                 "index": 4,
                 "data": {
-                    "from": "29d64abc-3c29-4df7-859d-8194e01d52bc",
-                    "to": "71f64517-02c2-4da1-9778-b8e3c9eaa966",
+                    "from": "73db2e65-7037-4904-bd4a-7675e384d66d",
+                    "to": "39ecb9ff-f438-4321-af47-b703efc7b52d",
                     "amount": 550
                 },
-                "hash": "00ad4f358f4f90e53be84d4211012742678f3493e6a0e6d84ac90a00edbb8480",
-                "previousHash": "00064dae387130c6edb548a7a4fc18defdd29f50b11315f3efcdad9bd043baf9",
-                "timestamp": "2022-03-14T22:28:41.750Z",
-                "pow": 409,
-                "difficulty": 2
+                "hash": "0000d33f671a518fb1cea43caf12c67956baae7b0a2d3b18da368b5fe571031c",
+                "previousHash": "000a3da6731c10f3491ec8295b6c7e10f661a6f437672fa395eb2873044777de",
+                "timestamp": "2022-03-14T22:32:06.808Z",
+                "pow": 35647,
+                "difficulty": 4
             },
             {
                 "index": 5,
                 "data": {
-                    "from": "82d90685-32cc-408e-b15b-32270b94fd4d",
-                    "to": "29d64abc-3c29-4df7-859d-8194e01d52bc",
+                    "from": "a13c0878-a854-4c75-a98d-08da937f92bd",
+                    "to": "73db2e65-7037-4904-bd4a-7675e384d66d",
                     "amount": 15
                 },
-                "hash": "000398512e75c15fa13d5f764e71b4a37f0d06288574da0e5d6089dc9a8a7ffa",
-                "previousHash": "00ad4f358f4f90e53be84d4211012742678f3493e6a0e6d84ac90a00edbb8480",
-                "timestamp": "2022-03-14T22:28:41.755Z",
-                "pow": 1037,
+                "hash": "0006cfb44f0ab2c595bfb1a8ebac05510066c408661ee8568012f200130184e6",
+                "previousHash": "0000d33f671a518fb1cea43caf12c67956baae7b0a2d3b18da368b5fe571031c",
+                "timestamp": "2022-03-14T22:32:06.917Z",
+                "pow": 4602,
                 "difficulty": 3
             }
         ]
