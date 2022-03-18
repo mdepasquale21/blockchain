@@ -13,13 +13,18 @@ export class Blockchain {
     private readonly blockTime = 13;
     // Adjust difficulty every nBlocks based on the time it took (2016 blocks for Bitcoin, 1 block for Ethereum)
     private readonly nBlocks = 1;
-    // Complete formula should be
-    // newDifficulty = oldDifficulty * ((this.nBlocks * this.blockTime) / actualMiningTimeOfPreviousNBlocksBlocks)
+    // Estimated time to add new nBlocks blocks to the chain
+    private readonly estimatedMiningTime = this.nBlocks * this.blockTime;
+
+    // Complete formula to update difficulty should be:
+    // newDifficulty = oldDifficulty * (this.estimatedMiningTime / actualMiningTimeOfPreviousNBlocksBlocks)
     // difficulty increases if estimated mining time is larger than actual mining time,
     // vice versa it decreases when estimated time is smaller than actual time
+
     // We use the Ethereum value for nBlocks and a very small custom blockTime
-    // We'll also use a simplified formula for recalculating difficulty (see below)
     // difficulty is recalculated after every block is mined, and it will be slightly different at each iteration
+    // We'll use a simplified formula for recalculating difficulty
+    // We'll increase/decrease difficulty by 1 if estimated time is larger/smaller than actual mining time
 
     protected constructor(private genesisBlock: IBlock,
                           private chain: IBlock[],
@@ -33,11 +38,11 @@ export class Blockchain {
     }
 
     private adjustDifficulty(): void {
-        this.difficulty += this.isActualMiningTimeLargerThanEstimatedTime() ? -1 : 1;
+        this.difficulty += this.isEstimatedTimeLargerThanActualMiningTime() ? 1 : -1;
     }
 
-    private isActualMiningTimeLargerThanEstimatedTime(): boolean {
-        return this.getMiningTimeOfLastBlock() > (this.nBlocks * this.blockTime);
+    private isEstimatedTimeLargerThanActualMiningTime(): boolean {
+        return this.estimatedMiningTime > this.getMiningTimeOfLastBlock();
     }
 
     private getMiningTimeOfLastBlock(): number {
