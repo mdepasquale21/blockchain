@@ -7,10 +7,8 @@
     "node": ">=14"
   },
   "scripts": {
-    "run": "nodemon --exec npm run _run",
-    "_run": "npm run build && npm run start",
-    "build": "tsc -p tsconfig.json",
-    "start": "node src/index.js",
+    "run": "nodemon --exec npm run start",
+    "start": "ts-node src/index.ts",
     "clean": "node ./clean.js"
   },
   "keywords": [
